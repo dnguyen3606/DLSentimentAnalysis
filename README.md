@@ -13,6 +13,7 @@
     - Unzip files into '/data/emopia/co-representation'
    
   Install required packages; there is no 'requirements.txt'. Some unexpected packages are:
+  - `pip install gdown`
   - `pip install pytorch-fast-transformers`
   - `pip install numpy==1.26.4` (if your current version is >v2.0.0
 </details>
