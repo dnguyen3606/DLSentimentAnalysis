@@ -26,24 +26,3 @@
 
   Instead, use Chocolatey ([install instructions here](https://chocolatey.org/install)) and run `choco install fluidsynth`. This is according to fluidsynth's actual installation instructions found on [their website](https://www.fluidsynth.org/download/)
 </details>
-
-<details>
-    <summary> Q3. How do I Run Streamlit based Music Generator Chatbot</summary>
-
-    A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
-
-    [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
-
-    1. Install the requirements
-
-    ```
-    $ pip install -r requirements.txt
-    ```
-
-    2. Run the app
-
-    ```
-    $ streamlit run streamlit_app.py
-    ```
-
-</details>
