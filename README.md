@@ -6,10 +6,9 @@
   <summary>Q1. How do I run this?</summary>
   Install required large files:
 
-  - [EMOPIA Transformer Checkpoint]()
+  - [EMOPIA Transformer Checkpoint](https://drive.google.com/file/d/19Seq18b2JNzOamEQMG1uarKjj27HJkHu/view)
     - Unzip 'loss_25_params.pt' into '/models/' at the same depth as the LSTM .pth.
-  - EMOPIA Dictionary
-    - Run `gdown --id 17dKUf33ZsDbHC5Z6rkQclge3ppDTVCMP`
+  - [EMOPIA Dictionary](https://drive.google.com/file/d/17dKUf33ZsDbHC5Z6rkQclge3ppDTVCMP/view)
     - Unzip files into '/data/emopia/co-representation'
    
   Install required packages; there is no 'requirements.txt'. Some unexpected packages are:

@@ -1,11 +1,3 @@
-streamlit
-fluidsynth
-pandas
-numpy=1.26.4
-gdown
-pytorch-fast-transformers
-pytorch
-scikit-learn
-transformers
-miditoolkit
-pretty-midi
+pytorch-fast-transformers==0.3.0
+torch
+torchvision==0.7.0

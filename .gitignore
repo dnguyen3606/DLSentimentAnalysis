@@ -1,5 +1,6 @@
 data/emopia/co-representation/ailabs_data.npz
 data/emopia/co-representation/emopia_data.npz
 models/loss_25_params.pt
-*.pyc
+
+*.py[cod]
 __pycache__/

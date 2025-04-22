@@ -1,3 +1,7 @@
+from fast_transformers.builders import TransformerEncoderBuilder as TransformerEncoderBuilder_local
+from fast_transformers.builders import RecurrentEncoderBuilder as RecurrentEncoderBuilder_local 
+from fast_transformers.masking import TriangularCausalMask as TriangularCausalMask_local
+
 import numpy as np
 import math
 import torch
@@ -5,10 +9,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset
 from transformers import AutoTokenizer
-
-from fast_transformers.builders import TransformerEncoderBuilder as TransformerEncoderBuilder_local
-from fast_transformers.builders import RecurrentEncoderBuilder as RecurrentEncoderBuilder_local 
-from fast_transformers.masking import TriangularCausalMask as TriangularCausalMask_local
 
 ################################################################################
 # GoEmotions LSTM Model
