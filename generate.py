@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 def generate(num_songs=1, emotion_tag=1):
     # path
-    path_gendir = 'output/'
+    path_gendir = 'output/midi/'
     path_saved_ckpt = 'models/loss_25_params.pt'
     path_dictionary = 'data/emopia/co-representation/dictionary.pkl'
 
@@ -60,7 +60,7 @@ def generate(num_songs=1, emotion_tag=1):
 
         if res is None:
             continue
-        np.save(path_outfile + '.npy', res)
+        # np.save(path_outfile + '.npy', res)
         write_midi(res, path_outfile + '.mid', word2event)
         print(f'music generated at {path_outfile}.mid')
 
@@ -76,6 +76,8 @@ def generate(num_songs=1, emotion_tag=1):
     
     print('ave token time:', sum(words_len_list) / sum(song_time_list))
     print('ave song time:', np.mean(song_time_list))
+
+    return path_outfile
 
     # runtime_result = {
     #     'song_time':song_time_list,
