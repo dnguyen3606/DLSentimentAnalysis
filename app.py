@@ -4,6 +4,17 @@ from label import predict_emotion
 from generate import generate
 from e2va import composite_va, classify_va
 from utils.midi2wav import midi_to_wav
+from utils.emopia import download_and_extract
+
+@st.cache_resource(show_spinner=False)
+def setup_files():
+    with st.spinner("Downloading and preparing necessary files..."):
+        download_and_extract("17dKUf33ZsDbHC5Z6rkQclge3ppDTVCMP")
+        download_and_extract("19Seq18b2JNzOamEQMG1uarKjj27HJkHu")
+    st.success("Model weights and dictionaries are ready!")
+    return True
+
+setup_files()
 
 st.title("CS4644 - Text to Emotion to Music Generation")
 

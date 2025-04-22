@@ -1,0 +1,11 @@
+streamlit
+fluidsynth
+pandas
+numpy=1.26.4
+gdown
+pytorch-fast-transformers
+pytorch
+scikit-learn
+transformers
+miditoolkit
+pretty-midi

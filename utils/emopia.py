@@ -1,7 +1,6 @@
 import miditoolkit
 from miditoolkit.midi.containers import Marker, Instrument, TempoChange, Note
-import random
-import string
+import random, string, os, zipfile, gdown, shutil
 
 BEAT_RESOL = 480
 BAR_RESOL = BEAT_RESOL * 4
@@ -77,3 +76,43 @@ def get_random_string(length):
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
+
+def download_and_extract(google_drive_id):
+    if google_drive_id == '19Seq18b2JNzOamEQMG1uarKjj27HJkHu': # pretrained transformer case
+        download_to_path = 'models/'
+        expected_file = os.path.join(download_to_path, 'loss_25_params.pt')
+    elif google_drive_id == '17dKUf33ZsDbHC5Z6rkQclge3ppDTVCMP': # co-representation/dictionary case
+        download_to_path = 'data/emopia/co-representation/'
+        expected_file = os.path.join(download_to_path, 'emopia_data.npz')
+    else:
+        return # dont use this function to download anything else. its unnecessary after all.
+    
+    if os.path.exists(expected_file):
+        return # if file already exists skip all this nonsense
+
+    zip_path = os.path.join(download_to_path, 'archive.zip')
+
+    gdown.download(
+        url=f'https://drive.google.com/uc?id={google_drive_id}', 
+        output=zip_path, 
+        quiet=False,
+    )
+
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(download_to_path)
+
+    flatten_directory(download_to_path)
+    
+    os.remove(zip_path)
+
+def flatten_directory(root_dir):
+    for dirpath, dirnames, filenames in os.walk(root_dir, topdown=False):
+        for filename in filenames:
+            src = os.path.join(dirpath, filename)
+            dst = os.path.join(root_dir,   filename)
+            shutil.move(src, dst)  
+        if dirpath != root_dir:
+            try:
+                os.rmdir(dirpath)
+            except OSError:
+                pass 
