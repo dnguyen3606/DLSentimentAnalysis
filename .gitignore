@@ -4,3 +4,6 @@ models/loss_25_params.pt
 
 *.py[cod]
 __pycache__/
+
+*.mid
+*.wav

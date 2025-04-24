@@ -77,7 +77,7 @@ def generate(num_songs=1, emotion_tag=1):
     print('ave token time:', sum(words_len_list) / sum(song_time_list))
     print('ave song time:', np.mean(song_time_list))
 
-    return path_outfile
+    return f'{path_outfile}.mid'
 
     # runtime_result = {
     #     'song_time':song_time_list,

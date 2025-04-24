@@ -25,8 +25,9 @@ loaded_model = LSTMModel(
     num_classes=28
 )
 
-loaded_model.load_state_dict(torch.load(model_pth))
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+state_dict = torch.load(model_pth, map_location=device)
+loaded_model.load_state_dict(state_dict)
 loaded_model.to(device)
 loaded_model.eval()
 

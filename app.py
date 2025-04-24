@@ -6,7 +6,7 @@ from e2va import composite_va, classify_va
 from utils.midi2wav import midi_to_wav
 from utils.emopia import download_and_extract
 
-@st.cache_resource(show_spinner=False)
+@st.cache_resource(show_spinner="Downloading setup files...")
 def setup_files():
     with st.spinner("Downloading and preparing necessary files..."):
         download_and_extract("17dKUf33ZsDbHC5Z6rkQclge3ppDTVCMP")
@@ -20,7 +20,7 @@ st.title("CS4644 - Text to Emotion to Music Generation")
 
 user_input = st.text_input("Enter your text:")
 if st.button("Generate Music"):
-    emotion_probs = predict_emotion(text=user_input)
+    emotion_probs = predict_emotion(text=user_input, returnProbs=True)
     composite_valence, composite_arousal = composite_va(emotion_probs=emotion_probs)
     emotion_class = classify_va(composite_valence=composite_valence, composite_arousal=composite_arousal)
 
