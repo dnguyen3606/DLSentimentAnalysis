@@ -9,3 +9,4 @@ scikit-learn
 transformers
 miditoolkit
 pretty-midi
+soundfile
