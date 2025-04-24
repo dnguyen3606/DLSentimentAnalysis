@@ -5,6 +5,8 @@ To run, either use:
 - CLI: `python main.py "text input of choice"`
 - Streamlit: `streamlit run app.py`
 
+If using CLI, navigate to output folder to find .mid and .wav outputs of music.
+
 We use the GoEmotions dataset trained using our own LSTM architecture to label text with probabilities that the text conveys any of the 28 emotions. We then translate these probabilities into valence-arousal levels, which we then input into EMOPIA, which generates music based off of valence-arousal.
 
 ## F.A.Q.
