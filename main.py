@@ -1,6 +1,7 @@
 from label import predict_emotion
 from generate import generate
 from e2va import composite_va, classify_va
+from utils.midi2wav import midi_to_wav
 import argparse
 
 if __name__ == "__main__":
@@ -17,4 +18,5 @@ if __name__ == "__main__":
     print(f"Composite Valence-Arousal Levels: {composite_valence}, {composite_arousal}")
     print(f"Emotion Class: Q{emotion_class}")
 
-    generate(emotion_tag=emotion_class)
+    midi_path = generate(emotion_tag=emotion_class)
+    midi_to_wav(midi_path)
