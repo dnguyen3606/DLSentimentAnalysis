@@ -36,3 +36,8 @@ We use the GoEmotions dataset trained using our own LSTM architecture to label t
 
   Note: If you are using Linux, you can sidestep this issue by using `apt-get install fluidsynth`
 </details>
+
+<details>
+  <summary>Q3. What is up with the 'wheel' installation requirement?</summary>
+  If `pip install -r requirements.txt` fails due to the wheel for pytorch-fast-transformers, you should instead run `pip install pytorch-fast-transformers --no-build-isolation`.
+</details>
