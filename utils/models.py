@@ -396,7 +396,7 @@ class TransformerModel(nn.Module):
             type_word_t = cur_word_type.long().unsqueeze(0).unsqueeze(0)
         else:
             type_word_t = torch.from_numpy(
-                    np.array([cur_word_type])).long().cuda().unsqueeze(0)        # shape = (1,1)
+                    np.array([cur_word_type])).long().unsqueeze(0)        # shape = (1,1)
 
         tf_skip_type = self.word_emb_type(type_word_t).squeeze(0)                # shape = (1, embd_size)
         
@@ -455,7 +455,7 @@ class TransformerModel(nn.Module):
 
 
         if is_training:
-            cur_word_emotion = torch.from_numpy(np.array([0])).long().cuda().squeeze(0)
+            cur_word_emotion = torch.from_numpy(np.array([0])).long().squeeze(0)
             # collect
             next_arr = torch.tensor([
                 cur_word_tempo,
@@ -558,7 +558,7 @@ class TransformerModel(nn.Module):
             h = None
             
             cnt_bar = 1
-            init_t = torch.from_numpy(init).long().cuda()
+            init_t = torch.from_numpy(init).long()
             print('------ initiate ------')
 
             if n_token == 9 and  key_tag is None:
@@ -580,7 +580,7 @@ class TransformerModel(nn.Module):
                 final_res.append(next_arr[None, ...])
                 if display:
                     print_word_cp(next_arr)
-                input_ = torch.from_numpy(next_arr).long().cuda()
+                input_ = torch.from_numpy(next_arr).long()
                 input_  = input_.unsqueeze(0).unsqueeze(0)
                 h, y_type, memory = self.forward_hidden(
                             input_, memory, is_training=False)
@@ -622,7 +622,7 @@ class TransformerModel(nn.Module):
                     print_word_cp(next_arr)
                 
                 # forward
-                input_ = torch.from_numpy(next_arr).long().cuda()
+                input_ = torch.from_numpy(next_arr).long()
                 input_  = input_.unsqueeze(0).unsqueeze(0)
                 h, y_type, memory = self.forward_hidden(
                     input_, memory, is_training=False)

@@ -26,16 +26,16 @@ def generate(num_songs=1, emotion_tag=1):
 
     # init model
     net = TransformerModel(n_class, is_training=False)
-    net.cuda()
+    #net.cuda()
     net.eval()
     
     # load model
     print('[*] load model from:',  path_saved_ckpt)
     
     try:
-        net.load_state_dict(torch.load(path_saved_ckpt))
+        net.load_state_dict(torch.load(path_saved_ckpt, map_location=torch.device("cuda" if torch.cuda.is_available() else "cpu")))
     except:
-        state_dict = torch.load(path_saved_ckpt)
+        state_dict = torch.load(path_saved_ckpt, map_location=torch.device("cuda" if torch.cuda.is_available() else "cpu"))
         new_state_dict = OrderedDict()
         for k, v in state_dict.items():
             name = k[7:] 

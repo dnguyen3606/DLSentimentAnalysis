@@ -1,10 +1,18 @@
+import torch
+torch.classes.__path__ = []
 import streamlit as st
-
 from label import predict_emotion
 from generate import generate
 from e2va import composite_va, classify_va
 from utils.midi2wav import midi_to_wav
 from utils.emopia import download_and_extract
+import asyncio
+
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
 
 @st.cache_resource(show_spinner="Downloading setup files...")
 def setup_files():
