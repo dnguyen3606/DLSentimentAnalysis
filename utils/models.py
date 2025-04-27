@@ -28,6 +28,20 @@ class LSTMModel(nn.Module):
         out = lstm_out[:, -1, :]
         out = self.fc(out)
         return self.dropout(out)
+
+class BoWClassifier(nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        super(BoWClassifier, self).__init__()
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        return x  
+
     
 ################################################################################
 # GoEmotions Dataset
@@ -62,6 +76,19 @@ class GoEmotionsDataset(Dataset):
             return self.input_ids[idx], self.attention_mask[idx], self.labels[idx]
         else:
             return self.input_ids[idx], self.attention_mask[idx], None
+
+class BoWDataset(Dataset):
+    def __init__(self, X, y):
+        self.X = X
+        self.y = y
+
+    def __len__(self):
+        return self.X.shape[0]
+
+    def __getitem__(self, idx):
+        bow_vector = self.X[idx].toarray().squeeze()  
+        label = self.y[idx]
+        return torch.tensor(bow_vector, dtype=torch.float32), torch.tensor(label, dtype=torch.float32)
 
 ################################################################################
 # EMOPIA Model
