@@ -7,6 +7,8 @@ To run, either use:
 
 If using CLI, navigate to output folder to find .mid and .wav outputs of music.
 
+You may also visit [this demonstration website](https://dlsentimentanalysis-ftc4ejrxiyxu3vxwiegk5y.streamlit.app/) hosted on Streamlit Community Cloud. However, due to resource limitations this cloud-hosted demonstration takes upwards of 10 minutes to coldstart. After an initial start, it loads immediately and runs inference in about a minute, as it is limited to CPU.
+
 We use the GoEmotions dataset trained using our own LSTM architecture to label text with probabilities that the text conveys any of the 28 emotions. We then translate these probabilities into valence-arousal levels, which we then input into EMOPIA, which generates music based off of valence-arousal.
 
 ## F.A.Q.
