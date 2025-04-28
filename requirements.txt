@@ -10,3 +10,4 @@ transformers
 miditoolkit
 pretty-midi
 soundfile
+pickle
