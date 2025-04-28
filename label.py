@@ -15,7 +15,7 @@ df.drop(columns=['example_very_unclear', 'rater_id', 'created_utc', 'link_id', '
 
 class_names = df.columns[1:].tolist()
 
-bow = False
+bow = True
 if not(bow):
     tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased', padding_side="left")
     model_pth = 'models/GoEmotionsLSTM_3-21.pth' 
