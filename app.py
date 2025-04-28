@@ -32,13 +32,19 @@ if st.button("Generate Music"):
     composite_valence, composite_arousal = composite_va(emotion_probs=emotion_probs)
     emotion_class = classify_va(composite_valence=composite_valence, composite_arousal=composite_arousal)
 
-    st.write(f"Text: {user_input}")
-    st.write(f"Emotion Probabilities: {emotion_probs}")
-    st.write(f"Composite Valence-Arousal Levels: {composite_valence}, {composite_arousal}")
-    st.write(f"Emotion Class: Q{emotion_class}")
+    print(f"Text: {user_input}")
+    print(f"Emotion Probabilities: {emotion_probs}")
+    print(f"Composite Valence-Arousal Levels: {composite_valence}, {composite_arousal}")
+    print(f"Emotion Class: Q{emotion_class}")
 
     midi_path = generate(emotion_tag=emotion_class)
     wav_path = midi_to_wav(midi_path=midi_path)
 
     st.write("Here’s your generated music based on the detected emotion!")
     st.audio(wav_path)
+
+    with st.expander("Under the Hood:"):
+        st.write(f"Text: {user_input}")
+        st.write(f"Emotion Probabilities: {emotion_probs}")
+        st.write(f"Composite Valence-Arousal Levels: {composite_valence}, {composite_arousal}")
+        st.write(f"Emotion Class: Q{emotion_class}")
